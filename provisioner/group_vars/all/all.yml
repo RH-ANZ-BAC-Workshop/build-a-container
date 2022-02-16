@@ -1,5 +1,6 @@
 ---
 admin_password: ansible
+ec2_name_prefix: build-a-container
 code_server: true
 workshop_dns_zone: "rhdemo.io"
 s3_state: "present"
