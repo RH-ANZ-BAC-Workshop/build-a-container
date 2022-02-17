@@ -1,5 +1,8 @@
 ---
 admin_password: ansible
+openshift_install: true
+ocp_student_password: openshift
+lab_guide_url: "https://redhat-scholars.github.io/build-a-container/intro-container-workshop/1.0/index.html"
 ec2_name_prefix: build-a-container
 code_server: true
 workshop_dns_zone: "rhdemo.io"
