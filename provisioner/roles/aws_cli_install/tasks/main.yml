@@ -13,11 +13,10 @@
   dnf:
     name:
       - awscli
+      - pip
 
 - name: Install boto3
-  package:
-    name: boto3
-    state: present
+  shell: pip install boto3
 
 - name: Set AWS Access Key ID
   shell: aws configure set aws_access_key_id {{ aws_access_key_id }} 
