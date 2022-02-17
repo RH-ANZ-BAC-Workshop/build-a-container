@@ -13,6 +13,7 @@
   dnf:
     name:
       - awscli
+      - apache2-utils
 
 - name: Install boto3
   shell: pip3 install boto3
