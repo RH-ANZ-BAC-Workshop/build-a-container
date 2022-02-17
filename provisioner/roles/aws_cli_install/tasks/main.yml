@@ -13,12 +13,10 @@
   dnf:
     name:
       - awscli
+      - httpd-tools
 
 - name: Install boto3
   shell: pip3 install boto3
-
-- name: Install apache2-utils
-  shell: pip3 install apache2-utils
 
 - name: Set AWS Access Key ID
   shell: aws configure set aws_access_key_id {{ aws_access_key_id }} 
