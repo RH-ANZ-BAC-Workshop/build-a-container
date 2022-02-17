@@ -1,7 +1,6 @@
 ---
 - name: Perform Checks to make sure this Playbook will complete successfully
-  hosts: localhost
-  connection: local
+  hosts: all
   become: false
   gather_facts: true
   tasks:
@@ -18,7 +17,7 @@
         name: aws_check_setup
 
 - name: Setup OpenShift Cluster
-  hosts: localhost
+  hosts: all
   tasks:
     - include_role: 
         name: openshift
@@ -29,7 +28,7 @@
         - (openshift_install is defined) and (openshift_install | bool) 
 
 - name: Debug Cluster Subdomain
-  hosts: localhost
+  hosts: all
   tasks:
     - debug:
         msg: "Cluster subdomain is {{ocp_cluster_subdomain}}"
@@ -37,7 +36,7 @@
         - (openshift_install is defined) and (openshift_install | bool) 
 
 - name: Create lab instances in AWS
-  hosts: localhost
+  hosts: all
   connection: local
   become: false
   gather_facts: false
@@ -114,7 +113,7 @@
   tags: control_node
 
 - name: print out information for instructor
-  hosts: localhost
+  hosts: all
   connection: local
   gather_facts: false
   tasks:

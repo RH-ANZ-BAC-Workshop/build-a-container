@@ -1,5 +1,4 @@
 ---
-# tasks file for cockpit
 - name: gather facts
   gather_facts:
 
@@ -26,5 +25,5 @@
   
 - name: Set AWS Default Output
   shell: aws configure set default.output {{ default_output }}
-  
+
 ...
