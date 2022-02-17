@@ -1,4 +1,20 @@
 ---
+# tasks file for cockpit
+- name: gather facts
+  gather_facts:
+
+- name: Gather package facts
+  package_facts:
+    manager: auto
+
+- name: Gather service facts
+  service_facts:
+
+- name: Install AWS CLI client 
+  dnf:
+    name:
+      - awscli
+
 - name: Set AWS Access Key ID
   shell: aws configure set aws_access_key_id {{ aws_access_key_id }} 
   
@@ -10,5 +26,5 @@
   
 - name: Set AWS Default Output
   shell: aws configure set default.output {{ default_output }}
-
+  
 ...
