@@ -1,4 +1,13 @@
 
+- name: Login to OpenShift cluster
+  shell: oc login -u {{ oc_username }} -p {{ oc_password }} {{ oc_api_url }} --insecure-skip-tls-verify
+  when: 
+    - oc_username | length > 0
+    - oc_password | length > 0
+    - oc_api_url | length > 0
+  register: result
+  ignore_errors: true
+
 - name: Check login status  
   block:
   - shell: oc whoami 2>/dev/null
