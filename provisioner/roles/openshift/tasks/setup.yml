@@ -48,12 +48,12 @@
 #     definition: "{{ lookup('template', './templates/user-project.yaml.j2') | from_yaml }}"
 #   loop: "{{ range(1, num_users + 1)|list }}"
 
-- name: Set up user permissions to user projects
-  k8s:
-    state: present
-    definition: "{{ lookup('template', './templates/rolebinding.yaml.j2') | from_yaml }}"
-  vars:
-    user_project: "student{{ item }}"
-    user_role: edit
-    user_name: "student{{ item }}"
-  loop: "{{ range(1, num_users + 1)|list }}"
+# - name: Set up user permissions to user projects
+#   k8s:
+#     state: present
+#     definition: "{{ lookup('template', './templates/rolebinding.yaml.j2') | from_yaml }}"
+#   vars:
+#     user_project: "student{{ item }}"
+#     user_role: edit
+#     user_name: "student{{ item }}"
+#   loop: "{{ range(1, num_users + 1)|list }}"
