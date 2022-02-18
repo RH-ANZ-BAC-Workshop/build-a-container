@@ -1,4 +1,10 @@
 
+- name: Install Python client for kubernetes
+  shell: pip3 install --upgrade --user kubernetes
+
+- name: Install Python client for OpenShift
+  shell: pip3 install --upgrade --user openshift
+
 - name: Login to OpenShift cluster
   shell: oc login -u {{ oc_username }} -p {{ oc_password }} {{ oc_api_url }} --insecure-skip-tls-verify
   when: 
@@ -39,7 +45,7 @@
 - name: Set up user projects
   k8s:
     state: present
-    definition: "{{ lookup('template', './templates/user-project.yaml.j2') | from_yaml }}"
+    definition: "{{ lookup('template', './templates/user-project.yaml.j2') }}"
   loop: "{{ range(1, num_users + 1)|list }}"
 
 - name: Set up user permissions to user projects

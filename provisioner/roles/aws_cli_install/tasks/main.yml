@@ -9,11 +9,12 @@
 - name: Gather service facts
   service_facts:
 
-- name: Install AWS CLI client
+- name: Install AWS CLI client and htpasswd
   dnf:
     name:
       - awscli
       - httpd-tools
+      - npm
 
 - name: Install boto3
   shell: pip3 install boto3
