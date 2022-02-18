@@ -45,15 +45,24 @@
 - name: Set up user projects
   k8s:
     state: present
-    definition: "{{ lookup('template', 'user-project.yaml.j2') | from_yaml }}"
-  loop: "{{ range(1, num_users + 1)|list }}"
+    definition:
+      apiVersion: project.openshift.io/v1
+      kind: Project
+      metadata:
+        name: student1
 
-- name: Set up user permissions to user projects
-  k8s:
-    state: present
-    definition: "{{ lookup('template', 'rolebinding.yaml.j2') | from_yaml }}"
-  vars:
-    user_project: "student{{ item }}"
-    user_role: edit
-    user_name: "student{{ item }}"
-  loop: "{{ range(1, num_users + 1)|list }}"
+# - name: Set up user projects
+#   k8s:
+#     state: present
+#     definition: "{{ lookup('template', 'user-project.yaml.j2') | from_yaml }}"
+#   loop: "{{ range(1, num_users + 1)|list }}"
+
+# - name: Set up user permissions to user projects
+#   k8s:
+#     state: present
+#     definition: "{{ lookup('template', 'rolebinding.yaml.j2') | from_yaml }}"
+#   vars:
+#     user_project: "student{{ item }}"
+#     user_role: edit
+#     user_name: "student{{ item }}"
+#   loop: "{{ range(1, num_users + 1)|list }}"
