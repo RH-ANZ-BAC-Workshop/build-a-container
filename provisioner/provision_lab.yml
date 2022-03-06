@@ -25,7 +25,6 @@
 
 - name: Setup OpenShift Cluster
   hosts: all
-  become: true
   tasks:
     - include_role: 
         name: openshift
